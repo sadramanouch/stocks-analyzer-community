@@ -1,0 +1,15 @@
+name: Contributor proposal
+description: Propose a focused improvement or offer to own a roadmap item
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and proposed change
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria and how you will check them
+    validations:
+      required: true

@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+.env.*
+!.env.example
+
+# Database (lives on Fly.io persistent volume, not committed)
+backend/stocks.db
+backend/*.db
+*.db-shm
+*.db-wal
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.turbo/
+
+# Build artifacts
+*.egg-info/
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Google Drive temp files
+.tmp.driveupload/
+.tmp.drivedownload/
+
+# IDE
+.vscode/
+.idea/
+
+# Claude Code
+.claude/
+
+# Secrets / keys
+*.pem
+*.key
+*.crt
+
+# Local contributor environment
+.venv/
+venv/
+*.sqlite*

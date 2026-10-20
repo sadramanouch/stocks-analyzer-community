@@ -1,0 +1,45 @@
+# Backend API — fly deploy from /backend
+app = "stockanalyzer-api"
+primary_region = "sjc"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT       = "8000"
+  DATA_DIR   = "/data"
+  # Set OLLAMA_URL to your Ollama instance (local tunnel or separate service):
+  # OLLAMA_URL = "https://your-ollama-tunnel.ngrok.io"
+  # Set CORS_ORIGINS to your frontend URL once deployed:
+  CORS_ORIGINS = "https://stockanalyzer-web.fly.dev,http://localhost:3000"
+
+[http_service]
+  internal_port        = 8000
+  force_https          = true
+  auto_stop_machines   = "off"
+  auto_start_machines  = true
+  min_machines_running = 1
+
+  [http_service.concurrency]
+    type       = "connections"
+    hard_limit = 25
+    soft_limit = 20
+
+  [[http_service.checks]]
+    interval     = "15s"
+    timeout      = "5s"
+    grace_period = "30s"
+    method       = "GET"
+    path         = "/health"
+
+# Persistent volume — stores SQLite DB + EDGAR filing cache
+# 3 GB handles ~10,000 companies with full filing cache
+[[mounts]]
+  source      = "stocks_data"
+  destination = "/data"
+  initial_size = "3gb"
+
+[[vm]]
+  memory   = "2gb"
+  cpu_kind = "shared"
+  cpus     = 2

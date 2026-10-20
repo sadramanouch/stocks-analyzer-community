@@ -1,0 +1,17 @@
+name: Bug report
+description: Report a reproducible problem using synthetic data
+body:
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps and expected behavior
+      description: Include your OS, runtime versions and the smallest reproduction.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result and logs
+      description: Remove tokens, private records and personal information.
+    validations:
+      required: true

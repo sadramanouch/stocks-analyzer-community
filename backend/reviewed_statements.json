@@ -1,0 +1,30 @@
+[
+  {
+    "ticker": "AAPL", "issuer_cik": "320193", "period_end": "2025-09-27",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
+    "statement_basis": "SEC Form 10-K annual financial statements", "reported_precision_usd": 1000000,
+    "reviewed_on": "2026-10-13", "method": "Independent comparison of the four annual fields with the published primary statement",
+    "fields": {"revenue": 416161000000, "net_income": 112010000000, "operating_cf": 111482000000, "capex": 12715000000}
+  },
+  {
+    "ticker": "MSFT", "issuer_cik": "789019", "period_end": "2026-06-30",
+    "source_url": "https://www.microsoft.com/en-us/investor/earnings/fy-2026-q4/press-release-webcast",
+    "statement_basis": "Issuer FY2026 annual earnings release; annual statements labeled unaudited", "reported_precision_usd": 1000000,
+    "reviewed_on": "2026-10-13", "method": "Independent comparison of the four annual fields with the published primary statement",
+    "fields": {"revenue": 331839000000, "net_income": 133749000000, "operating_cf": 182935000000, "capex": 115948000000}
+  },
+  {
+    "ticker": "HRMY", "issuer_cik": "1802665", "period_end": "2025-12-31",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/1802665/000110465926018859/hrmy-20251231x10k.htm",
+    "statement_basis": "SEC Form 10-K annual financial statements", "reported_precision_usd": 1000,
+    "reviewed_on": "2026-10-13", "method": "Independent comparison of the four annual fields with the published primary statement",
+    "fields": {"revenue": 868453000, "net_income": 158687000, "operating_cf": 348199000, "capex": 310000}
+  },
+  {
+    "ticker": "SIG", "issuer_cik": "832988", "period_end": "2026-01-31",
+    "source_url": "https://www.signetjewelers.com/investors/financial-news-releases/financial-news-release/2026/Signet-Jewelers-Reports-Fourth-Quarter-and-Full-Year-Fiscal-2026-Results/default.aspx",
+    "statement_basis": "Issuer FY2026 annual results release; amounts reported in millions to one decimal", "reported_precision_usd": 100000,
+    "reviewed_on": "2026-10-13", "method": "Independent comparison of the four annual fields with the published primary statement",
+    "fields": {"revenue": 6813600000, "net_income": 294400000, "operating_cf": 678800000, "capex": 153500000}
+  }
+]

@@ -1,0 +1,25 @@
+# Prospective public-purchase trials
+
+`/invest` contains an isolated research study under `prospective-purchase-trials-v1`. It never funds, trades or marks the user's paper account and has no broker connection. Starting it enables weekday passes at 09:20 and 18:20 America/New_York, after the focused disclosure monitor. Pause stops future passes; an active bounded pass can finish.
+
+Each pass screens every observed purchase ticker against the latest saved research edition. Enrollment requires the existing fresh common-equity and positive annual FCF policy, a fresh original SEC purchase passing XML reparse and amendment checks, explicit USD currency, and original SEC financial context whose issuer matches the filing and whose annual facts agree with the saved inputs. Unsupported or mismatched financial context cannot enroll. This is stricter than the ordinary paper workspace's financial gate. These observations and source coverage do not establish trader profitability.
+
+One ticker/filing accession creates one trial, irrespective of transaction line count. The original filing, eligible lines, decision, financial context, research edition, complete policies, calendar, registration timestamp and future dates are frozen and hashed. Repeated ingestion cannot re-enroll a filing. Screening receipts retain excluded-line reasons and are written when the screening changes. All qualifying new filings are included; more than 25 new or due trials blocks the bounded pass instead of picking a subset. The observed universe is limited by this application's actual source collection; it is not market-wide coverage. Filings and overlapping issuer windows are correlated, so no independent-sample inference or strategy-wide aggregate is reported.
+
+Entry is the close of the first covered scheduled session on a later New York date than registration. Exit is the fifth session including entry: four close-to-close intervals. Entry and exit never shift to a more convenient available price. Covered deadlines require the next scheduled session to be in the published calendar too. Collection uses only completed daily data after 17:30 New York time. Every planned close must have an immutable observation archived before the next scheduled close. Missing deadlines remain gaps; later downloads cannot repair a prospective trial. No observation or return is manufactured before those future sessions occur.
+
+Daily observations retain original Yahoo response IDs, bytes, request intervals, identity/currency/type, source observation time, normalized windows and input/result hashes. Every displayed close is matched to the exact original array. Each subsequent archive must agree with already captured closes. Original purchase XML and financial context are reverified on reads, and every result is recomputed. A later matching owner/issuer amendment blocks the comparison pending reconciliation. A frozen known complex action, or any reported split, dividend or capital distribution for the stock or SPY inside the window, also blocks this price-only model. Absence of a reported action does not establish completeness of corporate-action coverage. Source failures retain previous evidence, and low storage blocks new requests at a 256 MiB reserve.
+
+The reference uses fractional units with a 10 bps fee and 10 bps slippage on each side. For both stock and benchmark:
+
+```
+entry_cost = entry_close * (1 + 0.001) * (1 + 0.001)
+exit_proceeds = exit_close * (1 - 0.001) * (1 - 0.001)
+costed_reference_return = exit_proceeds / entry_cost - 1
+```
+
+Raw Yahoo closes remain vendor split-adjusted data. They are price references, not executable quotes; the model has no minimum fees, fractional-share constraints, spread/liquidity model, taxes, rounding or FX conversion. SPY is a vendor price comparison with the same costs, not independently corroborated issuer total return. The separate paper-account benchmark panel retains its own issuer/distribution model. Complete trials report their individual costed price references and difference in percentage points. Pending, blocked and invalid records never become zero returns. Verified account and executed-copy returns remain null; the verified execution count remains zero.
+
+Authenticated endpoints: `GET /api/signal-trials`, `POST /api/signal-trials/start`, `POST /api/signal-trials/pause`, `GET /api/signal-trials/trials/{id}`, and `GET /api/signal-trials/observations/{id}`. Exports include the exact JSON bytes represented by each SHA-256, decoded inputs and replayed results. Mutations use the existing signed-session proxy and same-origin protections. No user-provided timestamps, policies, orders or ticker lists are accepted. Immutable trial and observation tables reject updates/deletes; operational settings/runs are separate. A policy or calendar revision requires explicit versioned support; it cannot silently reinterpret retained evidence.
+
+This capability starts an observable experiment; it cannot supply future outcomes, broker records, government/crypto credentials, historical account returns, or certify legacy ratios, quotes and forecasts.
