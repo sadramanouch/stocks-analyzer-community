@@ -23,3 +23,11 @@ External datasets, models and services keep their own terms.
 Start with a small reviewed PR. If you want to help maintain a component, open
 an issue describing your area, availability and proposed first milestone.
 Repository or deployment access requires separate owner approval.
+
+## Shared rules and release hygiene
+
+See [the community charter](GOVERNANCE.md) for contribution rights, credit and
+maintainer access. Anyone can fork and submit a PR; only maintainers merge.
+Run `python3 scripts/check_release_hygiene.py` before pushing. CI also scans
+source and public history with a pinned, checksum-verified Gitleaks version.
+Passing these checks does not establish production security.
