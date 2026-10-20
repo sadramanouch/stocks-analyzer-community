@@ -1,13 +1,14 @@
-# Frontend — fly deploy from /frontend
-app = "stockanalyzer-web"
+# Opt-in template: supply your own app and backend/origin values before deployment.
+# Copy to fly.toml locally; blank app and .invalid hosts intentionally need editing.
+app = ""
 primary_region = "sjc"
 
 [build]
   dockerfile = "Dockerfile"
 
 [env]
-  API_URL = "https://stockanalyzer-api.fly.dev"
-  APP_ORIGIN = "https://stockanalyzer-web.fly.dev"
+  API_URL = "https://your-api.example.invalid"
+  APP_ORIGIN = "https://your-web.example.invalid"
   PORT = "3000"
 
 [http_service]

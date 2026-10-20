@@ -1,5 +1,6 @@
-# Backend API — fly deploy from /backend
-app = "stockanalyzer-api"
+# Opt-in template: choose your own app, volume and budget before deployment.
+# Copy to fly.toml locally; this blank app name intentionally cannot target an app.
+app = ""
 primary_region = "sjc"
 
 [build]
@@ -11,7 +12,7 @@ primary_region = "sjc"
   # Set OLLAMA_URL to your Ollama instance (local tunnel or separate service):
   # OLLAMA_URL = "https://your-ollama-tunnel.ngrok.io"
   # Set CORS_ORIGINS to your frontend URL once deployed:
-  CORS_ORIGINS = "https://stockanalyzer-web.fly.dev,http://localhost:3000"
+  CORS_ORIGINS = "http://localhost:3000"
 
 [http_service]
   internal_port        = 8000

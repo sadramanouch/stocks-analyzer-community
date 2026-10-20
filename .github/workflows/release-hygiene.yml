@@ -1,0 +1,31 @@
+name: Release hygiene
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  release-hygiene:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check tracked artifacts and license
+        run: |
+          python3 scripts/check_release_hygiene.py --self-test
+          python3 scripts/check_release_hygiene.py
+      - name: Install checksum-verified Gitleaks
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/gitleaks"
+          cd "$RUNNER_TEMP/gitleaks"
+          curl --fail --silent --show-error --location --retry 3 -o gitleaks.tar.gz https://github.com/gitleaks/gitleaks/releases/download/v8.24.2/gitleaks_8.24.2_linux_x64.tar.gz
+          echo 'fa0500f6b7e41d28791ebc680f5dd9899cd42b58629218a5f041efa899151a8e  gitleaks.tar.gz' | sha256sum --check
+          tar -xzf gitleaks.tar.gz gitleaks
+      - name: Scan source and public history without exposing matches
+        shell: bash
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/gitleaks/gitleaks" dir . --redact --no-banner
+          "$RUNNER_TEMP/gitleaks/gitleaks" git . --redact --no-banner --log-opts="--all"

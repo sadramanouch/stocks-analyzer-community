@@ -4,8 +4,8 @@ An experimental, self-hosted equity research workspace built with FastAPI,
 SQLite and Next.js. Inspect company financial inputs and original SEC insider
 filings, save research evidence, and evaluate explicitly virtual positions.
 
-**Contributors and co-maintainers wanted.** This project is being prepared for
-a community source release so others can continue it. Start with
+**Contributors and co-maintainers wanted.** This community source release is
+open so others can continue it. Start with
 [ROADMAP.md](ROADMAP.md) and [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## What exists
@@ -54,6 +54,12 @@ market-data feeds. AI/model downloads and provider usage have their own terms
 and possible costs. Keep keys server-side. SEC access requires an honest
 operator user agent and compliance with its access policies.
 
+Deployment manifests are opt-in `fly.example.toml` templates with no app target.
+Use your own infrastructure and review costs, authentication and data policies
+before configuring them. The legacy tunnel helper is disabled: it previously
+exposed a local model and modified a hosted deployment. Keep Ollama local for
+the synthetic demo; a public authenticated gateway needs a separate design.
+
 ## Checks
 
 ```sh
@@ -75,6 +81,9 @@ distributed with this source release.
 
 ## Contribute
 
+Start with [a clean-machine demo check](https://github.com/sadramanouch/stocks-analyzer-community/issues/1)
+or [synthetic financial fixtures](https://github.com/sadramanouch/stocks-analyzer-community/issues/2).
+
 Useful first work: reproduce the synthetic setup, expand financial-input
 fixtures, add accessible empty states, and improve test/data-source documentation.
 Larger work includes instrument identity, corporate-action reconciliation and
@@ -82,3 +91,6 @@ independent prospective research. Every claim needs dated source evidence.
 
 See [security reporting](SECURITY.md), [community conduct](CODE_OF_CONDUCT.md)
 and [the MIT license](LICENSE). Third-party dependencies retain their licenses.
+
+Read [our community charter](GOVERNANCE.md): fork freely, propose focused PRs,
+keep attribution, and earn stewardship through reviewed contributions.
